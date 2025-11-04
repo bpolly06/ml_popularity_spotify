@@ -1,12 +1,12 @@
 # train_model.py
 import os
-import pandas as pd
-import joblib
-import numpy as np
-from sklearn.linear_model import LinearRegression, Ridge, Lasso
-from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
-from sklearn.model_selection import train_test_split, GridSearchCV
-from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
+import pandas as pd # type: ignore
+import joblib # type: ignore
+import numpy as np # type: ignore
+from sklearn.linear_model import LinearRegression, Ridge, Lasso # type: ignore
+from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor # type: ignore
+from sklearn.model_selection import train_test_split, GridSearchCV # type: ignore
+from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error # type: ignore
 
 def train_and_evaluate(tune_hyperparams=False):
     project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
