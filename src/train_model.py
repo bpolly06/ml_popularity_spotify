@@ -1,4 +1,3 @@
-# train_model.py
 import os
 import pandas as pd # type: ignore
 import joblib # type: ignore
@@ -48,9 +47,8 @@ def train_and_evaluate(tune_hyperparams=False):
             best_model = model
             best_model_name = name
 
-    print(f"✅ Best baseline model: {best_model_name} (R²={best_score:.3f})")
+    print(f"Best baseline model: {best_model_name} (R²={best_score:.3f})")
 
-    # Optional hyperparameter tuning
     if tune_hyperparams and best_model_name in ["RandomForest", "GradientBoosting"]:
         print("🔧 Running hyperparameter tuning...")
         if best_model_name == "RandomForest":
@@ -71,11 +69,11 @@ def train_and_evaluate(tune_hyperparams=False):
 
         grid.fit(X_train, y_train)
         best_model = grid.best_estimator_
-        print(f"✅ Hyperparameter-tuned best model: {best_model_name}")
+        print(f"Hyperparameter-tuned best model: {best_model_name}")
         print(f"Best params: {grid.best_params_}")
 
     model_path = os.path.join(models_dir, "best_model.pkl")
     joblib.dump(best_model, model_path)
-    print(f"✅ Best model saved to: {model_path}")
+    print(f"Best model saved to: {model_path}")
 
     return sorted(results, key=lambda x: x[1], reverse=True)
